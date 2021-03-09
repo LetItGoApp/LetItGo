@@ -65,7 +65,7 @@ Registration Screen
 
 Stream Screen
 
-=> None, but future version will likely involve navigation to a detailed screen to see comments for each photo.
+=> Comments for selected photo
 
 Creation Screen
 
