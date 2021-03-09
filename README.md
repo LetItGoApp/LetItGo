@@ -15,12 +15,12 @@ This application allows users to post and sale items that they no longer need or
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Shop/Sell
+- **Mobile:** This application will primarily be developed for mobile devices but can also be used on a computer.
+- **Story:** Users can upload items that they want to sell. If a user finds an item that they would like to buy, they have the option to contact the seller for further inquiries.
+- **Market:** Anyone is allowed to use this mobile application. To keep transactions safe, buyer and seller can only meet in public places to exchange goods. Also, to avoid fraudulent actives funds will not be released to sellers until the buyer has successfully received their product.
+- **Habit:** This app can be used pretty often for individuals who like to buy and resale items. Also, it will be used pretty often by individuals who like to buy used/new items at a cheaper price.
+- **Scope:** First a user will be able to create a profile with their name, location, etc. Then, any user with a profile can search, post, buy, or sell items. When a user posts an item to sell, they must post clear pictures (from all angels) and create a base price. When a user finds an item that they want to buy, they have the option to contact the seller and negotiate a price. All money transactions will be done through our application. Once the item has been successfully picked up by the buyer funds will be released to the seller.
 
 ## Product Spec
 
