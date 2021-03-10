@@ -1,3 +1,4 @@
+![IMG_5329](https://user-images.githubusercontent.com/77079920/110568259-b88b3700-8120-11eb-9e34-e07b4bfd9877.jpg)
 Original App Design Project - README Template
 ===
 
@@ -73,8 +74,7 @@ This application allows users to post and sale items that they no longer need or
 * Profile -> Logout
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+file:///C:/Users/Rellsfargo/Downloads/IMG_5329.jpg
 
 ### [BONUS] Digital Wireframes & Mockups
 
