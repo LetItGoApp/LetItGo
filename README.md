@@ -83,7 +83,27 @@ This application allows users to post and sale items that they no longer need or
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+** Add list of network requests by screen **
+
+* Home Screen
+  * (Read/GET) List of All Available Products
+
+* Post + Comment Screen
+  * (Read/GET) List of Comments
+  * (Read/GET) Product Listing
+
+* Login/Register Screen
+  * Log in existing user
+  * Register a new user
+
+* Create Listing Screen
+  * (Create/POST) Create new listing
+
+* Profile Screen
+  * (Read/GET) Verify current user 
+  * (Read/GET) View all listings by user 
+  * (Delete) Delete listing
+  * Log user out
