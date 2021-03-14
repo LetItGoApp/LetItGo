@@ -96,6 +96,7 @@ This application allows users to post and sale items that they no longer need or
 * Login/Register Screen
   * Log in existing user
       ```
+      java
       ParseUser.logInInBackground(username, password, new LogInCallback() {
           @Override
           public void done(ParseUser parseUser, ParseException e) {
@@ -104,10 +105,12 @@ This application allows users to post and sale items that they no longer need or
                   Toast.makeText(LoginActivity.this, 
                       "Invalid Username/Password. Please try again.", Toast.LENGTH_SHORT).show();
                   return;
+              }
       }
       ```
   * Register a new user
       ```
+      java
       ParseUser user = new ParseUser();
       user.setUsername(usernameView.getText().toString());
       user.setPassword(passwordView.getText().toString());
@@ -119,6 +122,7 @@ This application allows users to post and sale items that they no longer need or
               if (e == null) {
                   Toast.makeText(RegisterActivity.this, 
                                     "Welcome, " + user.getUserName() + "!", Toast.LENGTH_SHORT).show();
+              }
 
       }
       ```
@@ -127,7 +131,20 @@ This application allows users to post and sale items that they no longer need or
   * (Create/POST) Create new listing
 
 * Profile Screen
-  * (Read/GET) Verify current user 
-  * (Read/GET) View all listings by user 
+  * (Read/GET) View all listings by user
+     ```
+     java
+      ParseQuery<Listing> allListings = ParseQuery.getQuery("Listing");
+        allListings.whereContains("username", ParseUser.getCurrentUser().getObjectId());
+        allListings.findInBackground(new FindCallback<Listing>() {
+            public void done(List<Listing> listings, ParseException e) {
+                if (e == null) {
+                    // Store listings in a List and display.
+                    Log.i(TAG, "List number of listings.");
+                } 
+                else { 
+                    Log.e(TAG, "Error message.");
+                }
+     ```
   * (Delete) Delete listing
   * Log user out
