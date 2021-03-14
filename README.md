@@ -14,7 +14,7 @@ Original App Design Project - README Template
 This application allows users to post and sale items that they no longer need or use.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
+
 - **Category:** Shop/Sell
 - **Mobile:** This application will primarily be developed for mobile devices but can also be used on a computer.
 - **Story:** Users can upload items that they want to sell. If a user finds an item that they would like to buy, they have the option to contact the seller for further inquiries.
@@ -88,10 +88,49 @@ This application allows users to post and sale items that they no longer need or
 
 * Home Screen
   * (Read/GET) List of All Available Products
-
+     ```java
+        ParseQuery<Listing> query = ParseQuery.getQuery(Listing.class);
+        query.include(Listing.KEY_USER);
+        query.setLimit(20); // Potentially get rid of this.
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Listing> listings, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting listings.");
+                    return;
+                }
+                for (Listing listing : listings) {
+                    Log.i(TAG, "Listing: " + listing.getDescription() + ", Username: " + listing.getUser().getUsername());
+                }
+            }
+        });
+     ```
 * Post + Comment Screen
+  * (Read/GET) Product for Sale
+       ```java
+       // Attach a click listener to row of products so that when clicked, it can move into the comment section, similar to Flixster.
+       // This will be a new activity. It should display only the single listing, as well as the comments belonging to said listing.
+       
+       // Wrap the specific listing that was clicked and pass it to that activity.
+     ```
   * (Read/GET) List of Comments
-  * (Read/GET) Product Listing
+     ```java
+        ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
+        query. // WHERE LISTING == THE LISTING THAT WAS CLICKED. Likely requires the object ID.
+        query.findInBackground(new FindCallback<Comment>() {
+            @Override
+            public void done(List<Comment> comments, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting comments.");
+                    return;
+                }
+                for (Comment comment : comments) {
+                    Log.i(TAG, "Comment: " + comment.content() + ", Username: " + comment.getUser().getUsername());
+                }
+            }
+        });
+     ```
 
 * Login/Register Screen
   * Log in existing user
@@ -105,7 +144,8 @@ This application allows users to post and sale items that they no longer need or
                       "Invalid Username/Password. Please try again.", Toast.LENGTH_SHORT).show();
                   return;
               }
-      }
+          }
+      });
       ```
   * Register a new user
       ```java
@@ -121,12 +161,18 @@ This application allows users to post and sale items that they no longer need or
                   Toast.makeText(RegisterActivity.this, 
                                     "Welcome, " + user.getUsername() + "!", Toast.LENGTH_SHORT).show();
               }
-
-      }
+          }
+      });
       ```
 
 * Create Listing Screen
   * (Create/POST) Create new listing
+     ```java
+      Listing listing = new Listing();
+      listing.setACL(listingACL);
+      // All listing information, like the owner of the post, etc.
+      listing.saveInBackground();
+     ```
 
 * Profile Screen
   * (Read/GET) View all listings by user
@@ -143,7 +189,6 @@ This application allows users to post and sale items that they no longer need or
                     Log.e(TAG, "Error message.");
                 }
             }
-        } 
+        }); 
      ```
   * (Delete) Delete listing
-  * Log user out
