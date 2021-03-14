@@ -86,8 +86,6 @@ This application allows users to post and sale items that they no longer need or
 
 ### Networking
 
-** Add list of network requests by screen **
-
 * Home Screen
   * (Read/GET) List of All Available Products
 
@@ -97,7 +95,33 @@ This application allows users to post and sale items that they no longer need or
 
 * Login/Register Screen
   * Log in existing user
+      ```
+      ParseUser.logInInBackground(username, password, new LogInCallback() {
+          @Override
+          public void done(ParseUser parseUser, ParseException e) {
+              if (e != null) {
+                  Log.e(TAG, "Issue with login", e);
+                  Toast.makeText(LoginActivity.this, 
+                      "Invalid Username/Password. Please try again.", Toast.LENGTH_SHORT).show();
+                  return;
+      }
+      ```
   * Register a new user
+      ```
+      ParseUser user = new ParseUser();
+      user.setUsername(usernameView.getText().toString());
+      user.setPassword(passwordView.getText().toString());
+      user.setEmail(email.getText().toString());
+                
+      user.signUpInBackground(new SignUpCallback() {
+          @Override
+          public void done(ParseException e) {
+              if (e == null) {
+                  Toast.makeText(RegisterActivity.this, 
+                                    "Welcome, " + user.getUserName() + "!", Toast.LENGTH_SHORT).show();
+
+      }
+      ```
 
 * Create Listing Screen
   * (Create/POST) Create new listing
