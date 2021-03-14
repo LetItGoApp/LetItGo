@@ -95,8 +95,7 @@ This application allows users to post and sale items that they no longer need or
 
 * Login/Register Screen
   * Log in existing user
-      ```
-      java
+      ```java
       ParseUser.logInInBackground(username, password, new LogInCallback() {
           @Override
           public void done(ParseUser parseUser, ParseException e) {
@@ -109,8 +108,7 @@ This application allows users to post and sale items that they no longer need or
       }
       ```
   * Register a new user
-      ```
-      java
+      ```java
       ParseUser user = new ParseUser();
       user.setUsername(usernameView.getText().toString());
       user.setPassword(passwordView.getText().toString());
@@ -121,7 +119,7 @@ This application allows users to post and sale items that they no longer need or
           public void done(ParseException e) {
               if (e == null) {
                   Toast.makeText(RegisterActivity.this, 
-                                    "Welcome, " + user.getUserName() + "!", Toast.LENGTH_SHORT).show();
+                                    "Welcome, " + user.getUsername() + "!", Toast.LENGTH_SHORT).show();
               }
 
       }
@@ -132,19 +130,20 @@ This application allows users to post and sale items that they no longer need or
 
 * Profile Screen
   * (Read/GET) View all listings by user
-     ```
-     java
+     ```java
       ParseQuery<Listing> allListings = ParseQuery.getQuery("Listing");
         allListings.whereContains("username", ParseUser.getCurrentUser().getObjectId());
         allListings.findInBackground(new FindCallback<Listing>() {
             public void done(List<Listing> listings, ParseException e) {
                 if (e == null) {
-                    // Store listings in a List and display.
+                    // Store listings in a List to display.
                     Log.i(TAG, "List number of listings.");
                 } 
                 else { 
                     Log.e(TAG, "Error message.");
                 }
+            }
+        } 
      ```
   * (Delete) Delete listing
   * Log user out
