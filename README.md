@@ -82,7 +82,17 @@ This application allows users to post and sale items that they no longer need or
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#Post
+| Property | Type | Description |
+| --- | --- | ---|
+| PostId | String | unique id for every post |
+| Image | File | Image of item that is being sold |
+| Description/caption | String | Description of item being sold |
+| Seller | String | When the post was posted |
+| Status | String | Describes if item is still for sale or sold already |
+| CommentCount | Integer | Total number of comments on post |
+| LikeCount | Integer | Total number of likes on post (optional) |
+
 
 ### Networking
 
