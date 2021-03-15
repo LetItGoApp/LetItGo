@@ -83,14 +83,15 @@ This application allows users to post and sale items that they no longer need or
 [This section will be completed in Unit 9]
 ### Models
 
-##Post
+Post
 | Property | Type | Description |
 | --- | --- | ---|
 | PostId | String | unique id for every post |
 | Image | File | Image of item that is being sold |
 | Description/caption | String | Description of item being sold |
-| Seller | String | When the post was posted |
+| Seller | String | Author of post |
 | Status | String | Describes if item is still for sale or sold already |
+| CreatedAt | DateTime | When the post was posted |
 | CommentCount | Integer | Total number of comments on post |
 | LikeCount | Integer | Total number of likes on post (optional) |
 
