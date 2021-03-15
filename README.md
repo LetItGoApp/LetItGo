@@ -82,7 +82,8 @@ This application allows users to post and sale items that they no longer need or
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-#Post
+
+##Post
 | Property | Type | Description |
 | --- | --- | ---|
 | PostId | String | unique id for every post |
