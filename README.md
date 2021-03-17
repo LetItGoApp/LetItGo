@@ -80,18 +80,16 @@ This application allows users to post and sale items that they no longer need or
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
 
 Post
 | Property | Type | Description |
 | --- | --- | ---|
-| PostId | String | unique id for every post |
 | Image | File | Image of item that is being sold |
 | Description/caption | String | Description of item being sold |
 | Seller | String | Author of post |
 | Status | String | Describes if item is still for sale or sold already |
-| CreatedAt | DateTime | When the post was posted |
 | CommentCount | Integer | Total number of comments on post |
 | LikeCount | Integer | Total number of likes on post (optional) |
 
@@ -129,7 +127,7 @@ Post
   * (Read/GET) List of Comments
      ```java
         ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
-        query. // WHERE LISTING == THE LISTING THAT WAS CLICKED. Likely requires the object ID.
+        query.whereEqualTo("objectId", ObjectID of post above.);
         query.findInBackground(new FindCallback<Comment>() {
             @Override
             public void done(List<Comment> comments, ParseException e) {
@@ -204,3 +202,20 @@ Post
         }); 
      ```
   * (Delete) Delete listing
+    ```java
+        ParseQuery<Listing> query = ParseQuery.getQuery(Listing.class);
+        query.whereEqualTo("objectId", ObjectID of listing to be deleted.);
+        query.findInBackground(new FindCallback<Listing>() {
+            @Override
+            public void done(List<Listing> listings, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting comments.");
+                    return;
+                }
+                for (Listing listing : listings) {
+                    listing.deleteInBackground();
+                    Log.i(TAG, "Listing " + listing.getObjectId() + " has been deleted.");
+                }
+            }
+        });
+      ```
