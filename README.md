@@ -209,7 +209,7 @@ Post
             @Override
             public void done(List<Listing> listings, ParseException e) {
                 if (e != null) {
-                    Log.e(TAG, "Issue getting comments.");
+                    Log.e(TAG, "Issue getting listings.");
                     return;
                 }
                 for (Listing listing : listings) {
