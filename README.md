@@ -28,12 +28,13 @@ This application allows users to post and sale items that they no longer need or
 
 **Required Must-have Stories**
 
-* User can post a new photo to their feed that includes a description of the product
-*	User can create a new account
-*	User can login and log out
-*	User can view a feed of photos
-*	User can view location of the item posted
-*	User can comment on a post
+- [X]	User can create a new account
+- [X]	User can login and log out
+- [ ] User can view main home screen and navigate to profile and photo fragments
+- [ ] User can post a new photo to the home feed that includes a description of the product
+- [ ]	User can view a feed of photos from the home feed
+- [ ]	User can view location of the item posted
+- [ ]	User can comment on a post
 
 **Optional Nice-to-have Stories**
 
@@ -75,9 +76,7 @@ This application allows users to post and sale items that they no longer need or
 ## Wireframes
 ![IMG_5329](https://i.imgur.com/08zEyWB.jpg)
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+## Gif Walkthrough
 
 ## Schema 
 
