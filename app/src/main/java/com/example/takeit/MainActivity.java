@@ -8,7 +8,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.takeit.Fragments.HomeFragment;
+import com.example.takeit.Fragments.PostFragment;
+import com.example.takeit.Fragments.ProfileFragment;
 import com.example.takeit.Models.Listing;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private BottomNavigationView bottomNavigationView;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,47 +34,30 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        queryPost();
-    }
-
-
-    private void queryPost() {
-        ParseQuery<Listing> query = ParseQuery.getQuery(Listing.class);
-        query.include(Listing.KEY_USER);
-        query.findInBackground(new FindCallback<Listing>() {
-            @Override
-            public void done(List<Listing> listings, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue getting listings.");
-                    return;
-                }
-                for (Listing listing : listings) {
-                    Log.i(TAG, "Post: " + listing.getDescription() + ", Username: " + listing.getUser().getUsername());
-                }
-            }
-        });
-
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
+
                 switch(menuItem.getItemId()){
                     case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.action_profile:
-                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.action_post:
-                        Toast.makeText(MainActivity.this, "Post", Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
+                        fragment = new HomeFragment();
                         break;
 
+                    case R.id.action_profile:
+                        fragment = new ProfileFragment();
+                        break;
+
+                    case R.id.action_post:
+                    default:
+                        fragment = new PostFragment();
+                        break;
                 }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
+        // Default viewed fragment.
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 }
