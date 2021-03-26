@@ -9,10 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.takeit.R;
 
+import org.w3c.dom.Text;
+
 public class PostFragment extends Fragment {
+
+    public static final String TAG = "PostFragment";
 
     public PostFragment() {
         // Required empty public constructor
@@ -28,5 +35,6 @@ public class PostFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }
