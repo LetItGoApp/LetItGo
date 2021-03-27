@@ -54,12 +54,14 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
         private ImageView ivPicture;
         private TextView tvPrice;
         private TextView tvDescription;
+        private TextView tvLabel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivPicture = itemView.findViewById(R.id.ivPicture);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvLabel = itemView.findViewById(R.id.tvLabel);
         }
 
         public void bind(Listing list) {
