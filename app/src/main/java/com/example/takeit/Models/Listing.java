@@ -48,11 +48,9 @@ public class Listing extends ParseObject {
         put(KEY_CREATED_AT, date);
     }
 
-    public double getPrice() {
-        return getDouble(KEY_PRICE);
-    }
+    public Double getPrice() { return getDouble(KEY_PRICE); }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         put(KEY_PRICE, price);
     }
     
