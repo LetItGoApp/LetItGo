@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DBF4FF"
+    android:background="@color/Mint"
     android:orientation="vertical"
     android:padding="8dp"
     tools:context=".Fragments.PostFragment">
@@ -20,7 +20,7 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#2E9EF4"
+        android:backgroundTint="@color/colorAccentDark"
         android:text="Take Picture"
         android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
         android:id="@+id/btnPostListing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#2E9EF4"
+        android:backgroundTint="@color/colorAccentDark"
         android:text="Post Listing"
         android:textStyle="bold" />
 
