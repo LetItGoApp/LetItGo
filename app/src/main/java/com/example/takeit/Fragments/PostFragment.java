@@ -82,14 +82,23 @@ public class PostFragment extends Fragment {
         btnPostListing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String description = etDescription.getText().toString();
-                Double price = Double.valueOf(etPrice.getText().toString());
-                if(description.isEmpty()) {
-                    Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
+                String description;
+                Double price;
+
+                if(etDescription.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Description cannot be empty.", Toast.LENGTH_SHORT).show();
                     return;
+                } else {
+                    description = etDescription.getText().toString();
+                }
+                if(etPrice.getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "You must enter a price.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    price = Double.valueOf(etPrice.getText().toString());
                 }
                 if (photoFile == null || ivListImage.getDrawable() == null){
-                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "An image must be attached.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
