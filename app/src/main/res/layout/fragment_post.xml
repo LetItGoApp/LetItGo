@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Mint"
+    android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".Fragments.PostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment for Making A New Listing Post." />
+    <ImageView
+        android:id="@+id/ivListImage"
+        android:layout_width="394dp"
+        android:layout_height="196dp"
+        tools:src="@tools:sample/avatars" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnCaptureImage"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccentDark"
+        android:text="Take Picture"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnPostListing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccentDark"
+        android:text="Post Listing"
+        android:textStyle="bold" />
+
+</LinearLayout>
