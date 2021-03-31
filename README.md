@@ -30,9 +30,9 @@ This application allows users to post and sale items that they no longer need or
 
 - [X]	User can create a new account
 - [X]	User can login and log out
-- [ ] User can view main home screen and navigate to profile and photo fragments
-- [ ] User can post a new photo to the home feed that includes a description of the product
-- [ ]	User can view a feed of photos from the home feed
+- [X] User can view main home screen and navigate to profile and photo fragments
+- [X] User can post a new photo to the home feed that includes a description of the product
+- [X]	User can view a feed of photos from the home feed
 - [ ]	User can view location of the item posted
 - [ ]	User can comment on a post
 
@@ -42,6 +42,7 @@ This application allows users to post and sale items that they no longer need or
 *	User can send an offer using a messaging system
 *	User can visit another person's profile to view all their items for sale
 *	User can view own profile
+*	Restyle the application
 
 ### 2. Screen Archetypes
 
@@ -77,7 +78,7 @@ This application allows users to post and sale items that they no longer need or
 ![IMG_5329](https://i.imgur.com/08zEyWB.jpg)
 
 ## Gif Walkthrough
-<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"><br>
+<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"> <img src="https://i.imgur.com/p3eivAu.gif" width="250px">
 
 ## Schema 
 
