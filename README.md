@@ -43,6 +43,7 @@ This application allows users to post and sale items that they no longer need or
 *	User can visit another person's profile to view all their items for sale
 *	User can view own profile
 *	Restyle the application
+*	User can refresh items on home feed via swipe down
 
 ### 2. Screen Archetypes
 
