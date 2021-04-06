@@ -38,12 +38,12 @@ This application allows users to post and sale items that they no longer need or
 
 **Optional Nice-to-have Stories**
 
+- [X]	User can view own profile
+- [X]	User can refresh items on home feed via swipe down
 * User can search by category 
 *	User can send an offer using a messaging system
 *	User can visit another person's profile to view all their items for sale
-- [X]	User can view own profile
 *	Restyle the application
-- [X]	User can refresh items on home feed via swipe down
 
 ### 2. Screen Archetypes
 
