@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -16,13 +17,13 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:layout_toEndOf="@id/postLabel"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvUsername"
-        tools:text="username"
+        android:layout_toEndOf="@id/postLabel"
         android:fontFamily="@font/roboto_condensed_regular"
-        android:textColor="@color/oceanBlue" />
+        android:textColor="@color/oceanBlue"
+        tools:text="username" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -30,18 +31,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvUsername"
         android:fontFamily="@font/roboto_condensed_bold"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        tools:text="Product Name"
-        android:textColor="@color/colorPrimaryDark"/>
+        tools:text="Product Name" />
 
     <ImageView
         android:id="@+id/ivPicture"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        tools:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/avatars"
         android:layout_below="@id/tvTitle"
-        android:contentDescription="@string/placeholder" />
+        android:contentDescription="@string/placeholder"
+        tools:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/moneyLabel"
@@ -62,18 +63,18 @@
         android:layout_toEndOf="@id/moneyLabel"
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/colorAccentDark"
+        android:textSize="15sp"
         android:textStyle="bold"
-        tools:text="45.89"
-        android:textSize="15sp" />
+        tools:text="45.89" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPrice"
-        android:fontFamily="@font/roboto_condensed_regular"
-        tools:text="Description here."
-        android:textSize="14sp"
         android:layout_marginBottom="10dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        tools:text="Description here." />
 </RelativeLayout>
