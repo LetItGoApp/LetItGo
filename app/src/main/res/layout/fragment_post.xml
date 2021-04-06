@@ -22,7 +22,16 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccentDark"
         android:text="Take Picture"
+        android:fontFamily="@font/roboto_condensed_regular"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name of item being sold"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -38,7 +47,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Price"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/btnPostListing"
@@ -46,6 +55,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccentDark"
         android:text="Post Listing"
+        android:fontFamily="@font/roboto_condensed_regular"
+
         android:textStyle="bold" />
 
 </LinearLayout>

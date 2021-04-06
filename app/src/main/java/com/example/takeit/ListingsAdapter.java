@@ -1,10 +1,12 @@
 package com.example.takeit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import com.example.takeit.Models.Listing;
 
 import com.parse.ParseFile;
 
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -50,24 +53,28 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        RelativeLayout container;
         private TextView tvUsername;
         private ImageView ivPicture;
         private TextView tvPrice;
         private TextView tvDescription;
-        private TextView tvLabel;
+        private TextView tvTitle;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             ivPicture = itemView.findViewById(R.id.ivPicture);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvLabel = itemView.findViewById(R.id.tvLabel);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Listing list) {
             //bind the post data to the view elements
 
             tvDescription.setText(list.getDescription());
+            tvTitle.setText(list.getTitle());
             tvUsername.setText(list.getUser().getUsername());
             String price = Double.toString(list.getPrice());
             tvPrice.setText(price);
@@ -75,6 +82,24 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
             if(image != null){
                 Glide.with(context).load(list.getImage().getUrl()).into(ivPicture);
             }
+
+            // 1. Register click listener on the entire row.
+            // 2. Navigate to a new activity on tap.
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, ListingActivity.class);
+                    i.putExtra("listing", Parcels.wrap(list));
+                    context.startActivity(i);
+                }
+            });
         }
     }
+
+    // Clean all elements of the recycler
+    public void clear(){
+        listings.clear();
+        notifyDataSetChanged();
+    }
+
 }

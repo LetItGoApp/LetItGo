@@ -15,6 +15,7 @@ public class Listing extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_PRICE = "price";
+    public static final String KEY_TITLE = "title";
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -53,5 +54,12 @@ public class Listing extends ParseObject {
     public void setPrice(Double price) {
         put(KEY_PRICE, price);
     }
-    
+
+    public String getTitle() {
+        return getString(KEY_TITLE);
+    }
+
+    public void setTitle(String title) {
+        put(KEY_TITLE, title);
+    }
 }

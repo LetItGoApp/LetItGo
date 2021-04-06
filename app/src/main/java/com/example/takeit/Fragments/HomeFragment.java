@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.takeit.ListingsAdapter;
 import com.example.takeit.Models.Listing;
@@ -30,6 +31,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvHome;
     private ListingsAdapter adapter;
     private List<Listing> allListings;
+    SwipeRefreshLayout swipeContainer;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -53,6 +56,22 @@ public class HomeFragment extends Fragment {
         //may be an error
         rvHome.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        swipeContainer = view.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+        );
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "fetching new data");
+                adapter.clear();
+                queryListings();
+            }
+        });
+
         queryListings();
 
     }
@@ -64,7 +83,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void done(List<Listing> listings, ParseException e) {
                 if(e != null){
-                    Log.e(TAG, "Issue getting listings",e);
+                    Log.e(TAG, "Issue getting listings", e);
                     return;
                 }
                 for(Listing listing : listings){
@@ -72,6 +91,7 @@ public class HomeFragment extends Fragment {
                 }
                 allListings.addAll(listings);
                 adapter.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
             }
         });
     }
