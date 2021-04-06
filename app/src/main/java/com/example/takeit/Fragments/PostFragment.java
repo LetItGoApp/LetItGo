@@ -37,6 +37,7 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.nio.file.spi.FileSystemProvider;
+import java.text.DecimalFormat;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -45,6 +46,7 @@ public class PostFragment extends Fragment {
     public static final String TAG = "PostFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
+    private EditText etTitle;
     private EditText etPrice;
     private Button btnCaptureImage;
     private Button btnPostListing;
@@ -68,6 +70,8 @@ public class PostFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        etTitle = view.findViewById(R.id.etTitle);
         etDescription = view.findViewById(R.id.etDescription);
         etPrice = view.findViewById(R.id.etPrice);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
@@ -82,9 +86,16 @@ public class PostFragment extends Fragment {
         btnPostListing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String title;
                 String description;
                 Double price;
 
+                if(etTitle.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Title cannot be empty.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    title = etTitle.getText().toString();
+                }
                 if(etDescription.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Description cannot be empty.", Toast.LENGTH_SHORT).show();
                     return;
@@ -102,7 +113,7 @@ public class PostFragment extends Fragment {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile, price);
+                savePost(description, currentUser, photoFile, price, title);
             }
         });
     }
@@ -158,12 +169,14 @@ public class PostFragment extends Fragment {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile, Double price) {
+    private void savePost(String description, ParseUser currentUser, File photoFile, Double price, String title) {
+
         Listing listing = new Listing();
         listing.setDescription(description);
         listing.setImage(new ParseFile(photoFile));
         listing.setUser(currentUser);
         listing.setPrice(price);
+        listing.setTitle(title);
         listing.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

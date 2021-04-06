@@ -54,20 +54,22 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
         private ImageView ivPicture;
         private TextView tvPrice;
         private TextView tvDescription;
-        private TextView tvLabel;
+        private TextView tvTitle;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             ivPicture = itemView.findViewById(R.id.ivPicture);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvLabel = itemView.findViewById(R.id.tvLabel);
         }
 
         public void bind(Listing list) {
             //bind the post data to the view elements
 
             tvDescription.setText(list.getDescription());
+            tvTitle.setText(list.getTitle());
             tvUsername.setText(list.getUser().getUsername());
             String price = Double.toString(list.getPrice());
             tvPrice.setText(price);
@@ -77,4 +79,11 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
             }
         }
     }
+
+    // Clean all elements of the recycler
+    public void clear(){
+        listings.clear();
+        notifyDataSetChanged();
+    }
+
 }
