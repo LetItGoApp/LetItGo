@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.PostFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProfile"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:padding="8dp" />
+    <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment for Profile. Click me to log out." />
+        android:layout_height="wrap_content"
+        android:text="Log Out" />
 
-</FrameLayout>
+</LinearLayout>
