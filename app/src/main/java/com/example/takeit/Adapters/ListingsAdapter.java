@@ -1,4 +1,4 @@
-package com.example.takeit;
+package com.example.takeit.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,12 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.takeit.ListingActivity;
 import com.example.takeit.Models.Listing;
 
+import com.example.takeit.R;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
