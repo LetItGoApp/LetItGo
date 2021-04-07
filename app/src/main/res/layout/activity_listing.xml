@@ -7,14 +7,86 @@
     tools:context=".ListingActivity">
 
     <TextView
-        android:id="@+id/tvProduct"
+        android:id="@+id/postLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="356dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="Owner: "
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/postLabel"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/oceanBlue"
+        tools:text="username" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUsername"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        tools:text="Title of the Product" />
+        tools:text="Product Name" />
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@id/tvTitle"
+        android:contentDescription="@string/placeholder"
+        app:srcCompat="@drawable/ic_user"
+        tools:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/moneyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivPicture"
+        android:layout_marginEnd="1dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="$"
+        android:textColor="@color/colorAccentDark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivPicture"
+        android:layout_toEndOf="@id/moneyLabel"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:text="45.89" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPrice"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        tools:text="Description here." />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="282dp"
+        android:layout_below="@+id/tvDescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="23dp" />
+
 </RelativeLayout>
