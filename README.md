@@ -33,13 +33,13 @@ This application allows users to post and sale items that they no longer need or
 - [X] User can view main home screen and navigate to profile and photo fragments
 - [X] User can post a new photo to the home feed
 - [X]	User can view a feed of photos from the home feed
+- [X]	User can view own profile
+- [X]	User can refresh items on home feed via swipe down
 - [ ]	User can view location of the item posted
 - [ ]	User can comment on a post
 
 **Optional Nice-to-have Stories**
 
-- [X]	User can view own profile
-- [X]	User can refresh items on home feed via swipe down
 * User can search by category 
 *	User can send an offer using a messaging system
 *	User can visit another person's profile to view all their items for sale
@@ -79,7 +79,7 @@ This application allows users to post and sale items that they no longer need or
 ![IMG_5329](https://i.imgur.com/08zEyWB.jpg)
 
 ## Gif Walkthrough
-<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"> <img src="https://i.imgur.com/p3eivAu.gif" width="250px">
+<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"> <img src="https://i.imgur.com/p3eivAu.gif" width="250px"> <img src="https://i.imgur.com/9F6abQ1.gif" width="250px">
 
 ## Schema 
 
