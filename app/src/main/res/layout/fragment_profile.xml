@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/Mint"
     tools:context=".Fragments.PostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvUser"
+        android:text="UserCurrent"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProfile"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:padding="8dp" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnLogout"
+        android:layout_below="@id/tvUser"/>
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log Out" />
+        android:text="Log Out"
+        android:layout_alignParentBottom="true" />
 
-</LinearLayout>
+</RelativeLayout>

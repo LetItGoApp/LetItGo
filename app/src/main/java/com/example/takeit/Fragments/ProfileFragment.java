@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.takeit.ListingsAdapter;
 import com.example.takeit.LoginActivity;
+import com.example.takeit.MainActivity;
 import com.example.takeit.Models.Listing;
 import com.example.takeit.R;
 import com.parse.FindCallback;
@@ -37,6 +38,7 @@ public class ProfileFragment extends Fragment {
     public static final String TAG = "ProfileFragment";
     private RecyclerView rvProfile;
     private ListingsAdapter adapter;
+    private TextView tvUser;
     private List<Listing> allListings;
 
     public ProfileFragment() {
@@ -57,11 +59,17 @@ public class ProfileFragment extends Fragment {
         rvProfile = view.findViewById(R.id.rvProfile);
         allListings = new ArrayList<>();
         adapter = new ListingsAdapter(getContext(), allListings);
+        tvUser = view.findViewById(R.id.tvUser);
 
         rvProfile.setAdapter(adapter);
 
         //may be an error
         rvProfile.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        if(ParseUser.getCurrentUser() != null)
+        {
+            tvUser.setText(ParseUser.getCurrentUser().getUsername());
+        }
 
         queryListings();
 
