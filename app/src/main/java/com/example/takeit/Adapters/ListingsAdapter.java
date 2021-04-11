@@ -80,6 +80,7 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
             String price = Double.toString(list.getPrice());
             tvPrice.setText(price);
             ParseFile image = list.getImage();
+
             if(image != null){
                 Glide.with(context).load(list.getImage().getUrl()).into(ivPicture);
             }

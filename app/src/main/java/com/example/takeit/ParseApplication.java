@@ -2,6 +2,7 @@ package com.example.takeit;
 
 import android.app.Application;
 
+import com.example.takeit.Models.Comment;
 import com.example.takeit.Models.Listing;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -13,6 +14,7 @@ public class ParseApplication extends Application {
         super.onCreate();
         // Register parse models.
         ParseObject.registerSubclass(Listing.class);
+        ParseObject.registerSubclass(Comment.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("UE6kPA5Wx9b5oBgQszJO7OooCqI224ZAQjauoxGy")

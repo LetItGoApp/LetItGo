@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_condensed_bold"
         android:text="Owner: "
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="1dp"
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
@@ -21,6 +23,7 @@
         android:layout_toEndOf="@id/postLabel"
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/oceanBlue"
+        android:layout_marginStart="1dp"
         tools:text="username" />
 
     <TextView
@@ -31,12 +34,16 @@
         android:fontFamily="@font/roboto_condensed_bold"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         tools:text="Product Name" />
 
     <ImageView
         android:id="@+id/ivPicture"
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_below="@id/tvTitle"
         android:contentDescription="@string/placeholder"
         app:srcCompat="@drawable/ic_user"
@@ -51,6 +58,8 @@
         android:layout_marginEnd="1dp"
         android:fontFamily="@font/roboto_condensed_bold"
         android:text="$"
+        android:layout_marginStart="8dp"
+
         android:textColor="@color/colorAccentDark"
         android:textStyle="bold" />
 
@@ -64,6 +73,7 @@
         android:textColor="@color/colorAccentDark"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:layout_marginStart="0dp"
         tools:text="45.89" />
 
     <TextView
@@ -75,18 +85,46 @@
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
+        android:layout_marginStart="8dp"
         tools:text="Description here." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvComments"
-        android:layout_width="match_parent"
-        android:layout_height="282dp"
+        android:layout_width="411dp"
+        android:layout_height="67dp"
+        android:layout_above="@+id/etWriteComment"
         android:layout_below="@+id/tvDescription"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="-1dp"
-        android:layout_marginBottom="23dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="2dp" />
+
+    <EditText
+        android:id="@+id/etWriteComment"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="28dp"
+        android:layout_toStartOf="@+id/btnAddComment"
+        android:hint="Type your comment here"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/btnAddComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="28dp"
+        android:text="Add"
+        android:textAlignment="center"
+        android:textStyle="bold" />
 
 </RelativeLayout>
