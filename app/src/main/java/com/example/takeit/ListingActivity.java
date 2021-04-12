@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -41,12 +42,11 @@ import static com.example.takeit.Models.Listing.KEY_CREATED_AT;
 public class ListingActivity extends AppCompatActivity {
     public static final String TAG = "ListingActivity";
 
-    private EditText etWriteComment;
     private List<Comment> allComments;
     private CommentAdapter adapter;
-    //final CommentAdapter adapter = new CommentAdapter(this, allComments);
 
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,33 +65,26 @@ public class ListingActivity extends AppCompatActivity {
         TextView tvDescription = findViewById(R.id.tvDescription);
         TextView tvTitle = findViewById(R.id.tvTitle);
         TextView tvUsername = findViewById(R.id.tvUsername);
-        //RecyclerView rvComments;
-
-        //Context context;
-
 
         Listing listing = Parcels.unwrap(getIntent().getParcelableExtra("listing"));
 
-
+        queryComments(listing);
 
         tvDescription.setText(listing.getDescription());
         tvTitle.setText(listing.getTitle());
         tvUsername.setText(listing.getUser().getUsername());
-        String price = Double.toString(listing.getPrice());
-        tvPrice.setText(price);
+        tvPrice.setText(String.format("%.2f", listing.getPrice()));
         ParseFile image = listing.getImage();
         if(image != null){
             Glide.with(ListingActivity.this).load(listing.getImage().getUrl()).into(ivPicture);
         }
-
-       // queryComments();
 
         btnAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String content;
                  //username of the comment being commented on
-            Log.i(TAG,listing.getObjectId());
+            Log.i(TAG, listing.getObjectId());
 
 
                 if(etWriteComment.getText().toString().isEmpty()) {
@@ -101,9 +94,8 @@ public class ListingActivity extends AppCompatActivity {
                     content = etWriteComment.getText().toString();
                 }
 
-
                ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(content, currentUser,listing);
+                savePost(content, currentUser, listing);
             }
         });
     }
@@ -129,27 +121,22 @@ public class ListingActivity extends AppCompatActivity {
         });
     }
 
-
-
-// want to display the users
-    //include query here
-    private void queryComments(){
+    private void queryComments(ParseObject listing) {
         ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
-        ParseQuery<Listing> listing = ParseQuery.getQuery(Listing.class);
         query.include(Comment.KEY_USER_COMMENTING);
-       // query.whereEqualTo(Comment.KEY_USER_COMMENTING, Comment.KEY_COMMENT_PARENT);
-        query.addDescendingOrder(KEY_CREATED_AT);
+        query.include(Comment.KEY_COMMENT_PARENT);
+        query.whereContains(Comment.KEY_COMMENT_PARENT, listing.getObjectId());
         query.findInBackground(new FindCallback<Comment>() {
-            @Override
-            public void done(List<Comment> comment, ParseException e) {
+            public void done(List<Comment> comments, ParseException e) {
                 if(e != null){
                     Log.e(TAG, "Issue getting comments", e);
                     return;
                 }
-                for(Comment comments : comment){
-                    Log.i(TAG,"Comment: "+ comments.getContent() + ", username" + comments.getUserCommenting().getUsername());
+                for(Comment comment : comments) {
+                    Log.i(TAG,"Comment: "+ comment.getContent() + ", username: "
+                            + comment.getUserCommenting().getUsername());
                 }
-                allComments.addAll(comment);
+                allComments.addAll(comments);
                 adapter.notifyDataSetChanged();
             }
         });

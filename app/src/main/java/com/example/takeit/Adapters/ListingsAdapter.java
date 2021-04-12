@@ -1,5 +1,6 @@
 package com.example.takeit.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -71,14 +72,14 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
             container = itemView.findViewById(R.id.container);
         }
 
+        @SuppressLint("DefaultLocale")
         public void bind(Listing list) {
             //bind the post data to the view elements
 
             tvDescription.setText(list.getDescription());
             tvTitle.setText(list.getTitle());
             tvUsername.setText(list.getUser().getUsername());
-            String price = Double.toString(list.getPrice());
-            tvPrice.setText(price);
+            tvPrice.setText(String.format("%.2f", list.getPrice()));
             ParseFile image = list.getImage();
 
             if(image != null){

@@ -15,7 +15,6 @@ public class Comment extends ParseObject {
     public static final String KEY_COMMENT_PARENT = "commentParent";
     public static final String KEY_USER_COMMENTING = "userCommenting";
     public static final String KEY_CREATED_AT = "createdAt";
-    public static final String KEY_LISTING_PARENT = "listingParent";
 
 
     public String getContent() {
@@ -39,12 +38,6 @@ public class Comment extends ParseObject {
     }
 
     public void setCommentParent(ParseObject commentParent) {put(KEY_COMMENT_PARENT, commentParent); }
-
-    public ParseObject getListingParent() {
-        return getParseObject(KEY_LISTING_PARENT);
-    }
-
-    public void setListingParent(ParseObject listingParent) {put(KEY_LISTING_PARENT, listingParent); }
 
     public Date getDate() {
         return getDate(KEY_CREATED_AT);

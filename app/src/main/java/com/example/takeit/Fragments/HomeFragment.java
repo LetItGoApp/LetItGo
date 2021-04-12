@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
                     return;
                 }
                 for(Listing listing : listings){
-                    Log.i(TAG,"Listing: "+ listing.getDescription() + ", username" + listing.getUser().getUsername());
+                    Log.i(TAG,"Listing: "+ listing.getDescription() + ", username: " + listing.getUser().getUsername());
                 }
                 allListings.addAll(listings);
                 adapter.notifyDataSetChanged();
