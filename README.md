@@ -36,7 +36,7 @@ This application allows users to post and sale items that they no longer need or
 - [X]	User can view own profile
 - [X]	User can refresh items on home feed via swipe down
 - [ ]	User can view location of the item posted
-- [ ]	User can comment on a post
+- [x]	User can comment on a post
 
 **Optional Nice-to-have Stories**
 
