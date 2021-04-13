@@ -33,13 +33,11 @@ public class Comment extends ParseObject {
         put(KEY_USER_COMMENTING, userCommenting);
     }
 
-    public ParseUser getCommentParent() {
-        return getParseUser(KEY_COMMENT_PARENT);
+    public ParseObject getCommentParent() {
+        return getParseObject(KEY_COMMENT_PARENT);
     }
 
-    public void setCommentParent(ParseUser userParent) {
-        put(KEY_COMMENT_PARENT, userParent);
-    }
+    public void setCommentParent(ParseObject commentParent) {put(KEY_COMMENT_PARENT, commentParent); }
 
     public Date getDate() {
         return getDate(KEY_CREATED_AT);

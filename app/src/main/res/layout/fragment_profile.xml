@@ -12,22 +12,36 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvUser"
         android:text="UserCurrent"
+        android:layout_marginTop="8dp"
         android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto_condensed_bold"
         android:textSize="20sp"
+
         android:textAlignment="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btnLogout"
-        android:layout_below="@id/tvUser"/>
+        android:layout_height="474dp"
+        android:layout_above="@+id/btnLogout"
+        android:layout_below="@id/tvUser"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp" />
+
+
+
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Log Out"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
