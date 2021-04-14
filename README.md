@@ -79,7 +79,8 @@ This application allows users to post and sale items that they no longer need or
 ![IMG_5329](https://i.imgur.com/08zEyWB.jpg)
 
 ## Gif Walkthrough
-<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"> <img src="https://i.imgur.com/p3eivAu.gif" width="250px"> <img src="https://i.imgur.com/9F6abQ1.gif" width="250px">
+<img src="https://i.imgur.com/JJPiJ7w.gif" width="250px"> <img src="https://i.imgur.com/p3eivAu.gif" width="250px"> <br>
+<img src="https://i.imgur.com/9F6abQ1.gif" width="250px"> <img src="https://i.imgur.com/fhQaJua.gif" width="250px"> 
 
 ## Schema 
 
