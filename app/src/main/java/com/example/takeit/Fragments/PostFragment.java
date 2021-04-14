@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -41,9 +43,11 @@ import com.parse.SaveCallback;
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.spi.FileSystemProvider;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -128,7 +132,11 @@ public class PostFragment extends Fragment implements EasyPermissions.Permission
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile, price, title);
+                try {
+                    savePost(description, currentUser, photoFile, price, title);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -210,7 +218,10 @@ public class PostFragment extends Fragment implements EasyPermissions.Permission
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile, Double price, String title) {
+    private void savePost(String description, ParseUser currentUser, File photoFile, Double price, String title) throws IOException {
+
+        double MyLat = gps.getLatitude();
+        double MyLong = gps.getLongitude();
 
         Listing listing = new Listing();
         listing.setDescription(description);
@@ -218,8 +229,16 @@ public class PostFragment extends Fragment implements EasyPermissions.Permission
         listing.setUser(currentUser);
         listing.setPrice(price);
         listing.setTitle(title);
-        ParseGeoPoint userLocation = new ParseGeoPoint(gps.getLatitude(), gps.getLongitude());
+        ParseGeoPoint userLocation = new ParseGeoPoint(MyLat, MyLong);
         listing.setLocation(userLocation);
+
+        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+        List<Address> addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+        String cityName = addresses.get(0).getLocality();
+        String stateName = addresses.get(0).getAdminArea();
+        String cityState = cityName + ", " + stateName;
+
+        listing.setCitystate(cityState);
 
         listing.saveInBackground(new SaveCallback() {
             @Override
@@ -229,8 +248,9 @@ public class PostFragment extends Fragment implements EasyPermissions.Permission
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Toast.makeText(getContext(), "Your post was uploaded!", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Post save was successful!");
-                etDescription.setText("");
+                etDescription.setText(null);
                 ivListImage.setImageResource(0);
             }
         });

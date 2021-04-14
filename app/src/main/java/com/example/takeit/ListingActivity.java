@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -44,6 +45,7 @@ public class ListingActivity extends AppCompatActivity {
 
     private List<Comment> allComments;
     private CommentAdapter adapter;
+    SwipeRefreshLayout swipeContainer;
 
 
     @SuppressLint("DefaultLocale")
@@ -65,8 +67,25 @@ public class ListingActivity extends AppCompatActivity {
         TextView tvDescription = findViewById(R.id.tvDescription);
         TextView tvTitle = findViewById(R.id.tvTitle);
         TextView tvUsername = findViewById(R.id.tvUsername);
+        TextView tvLocation = findViewById(R.id.tvLocation);
+        swipeContainer = findViewById(R.id.swipeContainer);
 
         Listing listing = Parcels.unwrap(getIntent().getParcelableExtra("listing"));
+
+        swipeContainer.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+        );
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "fetching new data");
+                adapter.clear();
+                queryComments(listing);
+            }
+        });
 
         queryComments(listing);
 
@@ -74,6 +93,7 @@ public class ListingActivity extends AppCompatActivity {
         tvTitle.setText(listing.getTitle());
         tvUsername.setText(listing.getUser().getUsername());
         tvPrice.setText(String.format("%.2f", listing.getPrice()));
+        tvLocation.setText(listing.getCityState());
         ParseFile image = listing.getImage();
         if(image != null){
             Glide.with(ListingActivity.this).load(listing.getImage().getUrl()).into(ivPicture);
@@ -96,6 +116,7 @@ public class ListingActivity extends AppCompatActivity {
 
                ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(content, currentUser, listing);
+                etWriteComment.setText(null);
             }
         });
     }
@@ -115,8 +136,8 @@ public class ListingActivity extends AppCompatActivity {
                     Toast.makeText(ListingActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Toast.makeText(ListingActivity.this, "Comment posted!", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Comment save was successful!");
-
             }
         });
     }
@@ -138,6 +159,7 @@ public class ListingActivity extends AppCompatActivity {
                 }
                 allComments.addAll(comments);
                 adapter.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
             }
         });
     }

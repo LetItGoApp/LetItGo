@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TakeIt">
-        <activity android:name=".ListingActivity"></activity>
+        <activity android:name=".ListingActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
 

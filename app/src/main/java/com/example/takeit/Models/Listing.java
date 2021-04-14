@@ -18,6 +18,7 @@ public class Listing extends ParseObject {
     public static final String KEY_PRICE = "price";
     public static final String KEY_TITLE = "title";
     public static final String KEY_LOCATION = "location";
+    public static final String KEY_CITYSTATE = "cityState";
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -68,4 +69,8 @@ public class Listing extends ParseObject {
     public ParseGeoPoint getLocation() { return getParseGeoPoint(KEY_LOCATION); }
 
     public void setLocation(ParseGeoPoint location) { put(KEY_LOCATION, location); }
+
+    public String getCityState() { return getString(KEY_CITYSTATE); }
+
+    public void setCitystate(String cityState) { put(KEY_CITYSTATE, cityState); }
 }

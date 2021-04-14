@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_condensed_bold"
-        android:text="Owner: "
-        android:layout_marginStart="8dp"
+        android:text="Seller: "
+        android:layout_marginStart="9dp"
         android:layout_marginEnd="1dp"
         android:textColor="@color/colorPrimaryDark" />
 
@@ -38,13 +38,24 @@
         android:layout_marginEnd="8dp"
         tools:text="Product Name" />
 
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        tools:text="Tallahassee"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/fauxMint"
+        android:layout_marginStart="8dp"
+        />
+
     <ImageView
         android:id="@+id/ivPicture"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_below="@id/tvTitle"
+        android:layout_below="@id/tvLocation"
         android:contentDescription="@string/placeholder"
         app:srcCompat="@drawable/ic_user"
         tools:scaleType="centerCrop"
@@ -88,19 +99,27 @@
         android:layout_marginStart="8dp"
         tools:text="Description here." />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvComments"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/btnAddComment"
         android:layout_below="@+id/tvDescription"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="1dp"
-        android:layout_marginBottom="2dp"
- />
+        android:layout_marginBottom="2dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+        />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <EditText
         android:id="@+id/etWriteComment"
@@ -112,7 +131,7 @@
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="28dp"
         android:layout_toStartOf="@+id/btnAddComment"
-        android:hint="Type your comment here"
+        android:hint="Type your comment here."
         android:background="@color/colorWhite"
         android:textColor="@color/colorPrimaryDark"/>
 
